@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-
 typedef int ElementType;
 
 typedef struct tagNode
@@ -8,6 +7,14 @@ typedef struct tagNode
     ElementType Data;
     struct tagNode* NextNode;
 } Node;
+
+Node* SLL_CreateNode(ElementType NewData)
+{
+    Node* NewNode = (Node*)malloc(sizeof(Node));
+    NewNode->Data = NewData;
+    NewNode->NextNode = NULL;
+    return NewNode;
+}
 
 // Head: &Node / Tail : &Node
 // Head.next : &NewNode
