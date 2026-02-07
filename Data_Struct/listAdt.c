@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef int ElementType;
 
@@ -16,8 +17,6 @@ Node* SLL_CreateNode(ElementType NewData)
     return NewNode;
 }
 
-// Head: &Node / Tail : &Node
-// Head.next : &NewNode
 void SLL_AppendNode(Node** Head, Node* NewNode)
 {
     if ((*Head) == NULL)
@@ -35,15 +34,24 @@ void SLL_AppendNode(Node** Head, Node* NewNode)
     }
 }
 
+Node* SLL_GetNodeAt(Node* Head, int Loc)
+{
+    Node* Current = Head;
+    while ((Current != NULL) && (--Loc) >= 0)
+    {
+        Current = Current->NextNode;
+    }
+    return Current;
+}
+
 int main()
 {
-    // CreateNode, DestroyNode
-    // AppendNode
-    // GetNodeAt
-    // RemoveNode
-    // InsertAfter, InsertNewHead
+    Node* List = NULL;
+    Node* MyNode = NULL;
 
-    
-    
-    return 0;
+    SLL_AppendNode(&List, SLL_CreateNode(117));
+    SLL_AppendNode(&List, SLL_CreateNode(119));
+
+    MyNode = SLL_GetNodeAt(List, 1);
+    printf("%d", MyNode->Data);
 }
